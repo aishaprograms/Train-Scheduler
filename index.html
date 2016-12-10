@@ -13,6 +13,20 @@
 </head>
 
 <body>
+    <!-- Modal pops up if user didn't add valid inputs in the form -->
+    <div id="train-modal" class="modal">
+        <div class="modal-content">
+            <h4>Oops!</h4>
+            <p>Please enter valid Train Schedule inputs.</p>
+            <p>Train name should be a "string."</p>
+            <p>Destination should be a "string."</p>
+            <p>First train time should be of the format HH:mm (24 hour time).</p>
+            <p>Frequency should be a number (in minutes).</p>
+        </div>
+        <div class="modal-footer">
+            <a class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+        </div>
+    </div>
     <div class="section">
         <div class="container">
             <h1 class="header center">Train Scheduler</h1>
@@ -98,6 +112,9 @@
     </script>
     <!-- App JS link -->
     <script type="text/javascript" src="assets/js/app.js"></script>
+    <script type="text/javascript">
+    $('.modal').modal();
+    </script>
 </body>
 
 </html>
