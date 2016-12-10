@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Train Scheduler</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <div class="section">
+        <div class="container">
+            <h1 class="header center">Train Scheduler</h1>
+            <p class="center">Because CTA Transit Tracks is just too unreliable</p>
+            <p class="center" id="current-time">Current time in military time (24-hour format): <span id="time-update"></span></p>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <h3>Current Train Schedule</h3>
+            </div>
+            <!-- Table of train schedule, updated by Firebase -->
+            <table class="responsive-table centered striped" id="schedule-table">
+                <thead>
+                    <tr>
+                        <th data-field="Name">Train Name</th>
+                        <th data-field="Destination">Destination</th>
+                        <th data-field="Frequency">Frequency (min)</th>
+                        <th data-field="Arrival">Next Arrival</th>
+                        <th data-field="Away">Minutes Away</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <h3>Add Train</h3>
+            </div>
+            <div class="row">
+                <!-- Form to add new trains -->
+                <form class="col s12" id="add-train-form">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="add-train-name" type="text" class="validate">
+                            <label for="add-train-name">Train Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="add-destination" type="text" class="validate">
+                            <label for="add-destination">Destination</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="add-train-time" type="text" class="validate">
+                            <label for="add-train-time">First Train Time (military HH:mm)</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="add-frequency" type="text" class="validate">
+                            <label for="add-frequency">Frequency (min)</label>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" class="waves-effect waves-light btn" id="add-train-button">Submit</button>
+            </div>
+        </div>
+    </div>
+    <!--Import jQuery before materialize.js-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    <!-- Moment JS link -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.6.3/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyCJf8WQnXfYPZT66PnlgeS--UJNulwKh2U",
+        authDomain: "train-scheduler-6cbbd.firebaseapp.com",
+        databaseURL: "https://train-scheduler-6cbbd.firebaseio.com",
+        storageBucket: "train-scheduler-6cbbd.appspot.com",
+        messagingSenderId: "983404597529"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <!-- App JS link -->
+    <script type="text/javascript" src="assets/js/app.js"></script>
+</body>
+
+</html>
